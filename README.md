@@ -173,7 +173,7 @@ cd Autonomous_Robots_T3
 ### Building the package
 
 ```bash 
-colcon build --packages-select robot_controller
+colcon build --packages-select robot_navigation_yolo
 source install/setup.bash
 ```
 To use the developed solution, the Clearpath simulator must have been correctly installed, as well as the sensors package must have been obtained for possible troubleshooting.
