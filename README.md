@@ -193,19 +193,19 @@ Replace the values ​​of x,y,yaw to the desired values.
 To visualize the development of the exploration process in rviz:
 
  ```bash
-ros2 launch clearpath_gz simulation.launch.py x:=1.5 y:=2.7 yaw:=1.5707
+ros2 launch clearpath_viz view_navigation.launch.py namespace:=a200_0000
 ```
 
 Launch nav2 demos to run the navigation process:
 
  ```bash
-ros2 launch clearpath_viz view_navigation.launch.py namespace:=a200_0000
+ros2 launch clearpath_nav2_demos nav2.launch.py setup_path:=$HOME/clearpath/ use_sim_time:=true
 ```
 
 Initialize the exploration node:
 
  ```bash
-ros2 launch clearpath_nav2_demos nav2.launch.py setup_path:=$HOME/clearpath/ use_sim_time:=true
+ros2 run robot_navigation_yolo fontrier_based_exploratin 
 ```
 Initialize the navigation node:
 
