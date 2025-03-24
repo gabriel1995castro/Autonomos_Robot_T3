@@ -31,7 +31,26 @@ During the development of the work, the robot's movement procedure in the enviro
 
 ### Exploration strategy:
 
-Inserir o texto do algoritmo de exploração.
+The exploration algorithm is designed to perform **autonomous exploration** in unknown environments. It uses an **occupancy map** to identify unexplored boundaries and determine the best navigation points for map expansion.
+
+**Map Reception:** The node listens to map data and internally updates information about the occupancy of the environment.
+
+**Robot Position Reception:** The robot's pose is recorded to determine the current location and calculate the destination points.
+
+**Boundary Identification:** The map is analyzed to detect cells that border unknown regions.
+
+**Boundary Clustering:** A clustering algorithm separates the boundaries into coherent sets.
+
+**Best Boundary Selection:** Criteria such as distance, proximity to obstacles, and boundary size are used to select the best destination.
+
+**Navigation Goal Sending:** The chosen point is sent as a navigation goal to the robot.
+
+**Monitoring and Cancellation:** The execution is monitored and, if a person is detected, the exploration is stopped.
+
+| Exploration process.|
+|--------------------------|
+| ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/441654e2a2e7af0622b6991d619cc46ba892d300/Images/Screenshot%20from%202025-03-24%2012-36-21.png) |
+
 
 ### Navigation strategy:
 
@@ -52,17 +71,20 @@ Navigation to the final position is performed with **Nav2**, taking into account
 
 For the people detection process, YOLOv8n was used, a model developed by Ultralytics, optimized to offer high speed and low computational demand. It is widely used in mobile devices and systems with limited resources, ensuring good accuracy and efficiency in real-time object detection.
 
-| YOLOv8n detection|
-|--------------------------|
-| ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/20c0f8ac9953baed6b4bc8d3df3cc8ee7e30bad2/Images/output_image2.jpg) |
-| ![]([https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/20c0f8ac9953baed6b4bc8d3df3cc8ee7e30bad2/Images/output_image2.jpg](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/20c0f8ac9953baed6b4bc8d3df3cc8ee7e30bad2/Images/output_image3.jpg)) |
-
+| Yolov8n image test 1 | Yolov8n image test 2|
+|--------------------|--------------------------------|
+| ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/441654e2a2e7af0622b6991d619cc46ba892d300/Images/output_image2.jpg) | ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/441654e2a2e7af0622b6991d619cc46ba892d300/Images/output_image3.jpg)|
 
 The node responsible for person detection receives data from the robot's RGB camera and depth camera. To avoid false positive detections, the code uses a **confidence threshold** (confidence_threshold), which eliminates all detections with less than 60% certainty.
 
 The **Intel RealSense D435** camera parameters are initialized with the values ​​fx, fy, cx, and cy, which are used in the depth calculation. The YOLO model is loaded with detection focused only on the "person" (class 0).
 
 When a person is detected, the algorithm **draws a bounding box** around the person and stores the **center** of the object to be used in the **depth calculation**.
+
+| Person detection in simulated environment|
+|--------------------------|
+| ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/441654e2a2e7af0622b6991d619cc46ba892d300/Images/image.png) |
+
 
 The 3D position of the person in the environment is calculated in the camera coordinate system and **transformed** to the robot coordinate system using the robot's pose at the time of detection.
 
