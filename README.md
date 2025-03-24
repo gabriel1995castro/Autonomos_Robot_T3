@@ -137,8 +137,8 @@ These calculations help determine the person's orientation, precisely adjusting 
 ### Cloning repository 
 
 ```bash 
-git clone https://github.com/gabriel1995castro/autonomous_robots.git
-cd autonomous_robots
+https://github.com/gabriel1995castro/Autonomos_Robot_T3.git
+cd Autonomous_Robots_T3
 ```
 
 ### Building the package
@@ -147,22 +147,44 @@ cd autonomous_robots
 colcon build --packages-select robot_controller
 source install/setup.bash
 ```
+To use the developed solution, the Clearpath simulator must have been correctly installed, as well as the sensors package must have been obtained for possible troubleshooting.
 
-To start the navigation and obstacle detection system, both programs must be called via a launch file. This file ensures that the two modules run together and are correctly synchronized.
-
-Loading the world A:
-
-```bash 
-ros2 launch robot_controller world_A_launch.py
+```bash
+https://docs.clearpathrobotics.com/docs/ros/tutorials/simulator/install
 ```
-Loading the world B:
+# Executing the proposed solution:
+The robot can be positioned in a random position using the command:
 
-```bash 
-ros2 launch robot_controller world_B_launch.py
+ ```bash
+ros2 launch clearpath_gz simulation.launch.py x:=1.5 y:=2.7 yaw:=1.5707
 ```
 
-Execute the navigation and detectetion:
+Replace the values ​​of x,y,yaw to the desired values.
 
-```bash 
-ros2 launch robot_controller robot_controller_launch.py
+To visualize the development of the exploration process in rviz:
+
+ ```bash
+ros2 launch clearpath_gz simulation.launch.py x:=1.5 y:=2.7 yaw:=1.5707
+```
+
+Launch nav2 demos to run the navigation process:
+
+ ```bash
+ros2 launch clearpath_gz simulation.launch.py x:=1.5 y:=2.7 yaw:=1.5707
+```
+
+Initialize the exploration node:
+
+ ```bash
+ros2 run robot_navigation_yolo fontrier_based_exploratin
+```
+Initialize the navigation node:
+
+ ```bash
+ros2 run robot_navigation_yolo navigation_node
+```
+Initialize the node for people detection using:
+
+ ```bash
+ros2 run robot_navigation_yolo yolo_detector_node
 ```
