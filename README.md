@@ -67,7 +67,7 @@ The 3D position of the person in the environment is calculated in the camera coo
 The first conversion process involves using the depth image and the pixel coordinates of the detected object to calculate the object coordinates. The formulas for the **X_camera​** and **Y_camera**​ coordinates are as follows:
 
 $$
-X_camera = ((x_(obj) - c_x) * d) / f_x
+X_camera = ((x_obj_ - c_x) * d) / f_x
 $$
 
 $$
