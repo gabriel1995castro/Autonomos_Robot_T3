@@ -27,7 +27,7 @@ During the development of the work, the robot's movement procedure in the enviro
 
 1.**Exploration:** phase in which the robot moves through the environment autonomously in search of a person.
 
-2. **Navigation:** begins as soon as the person is found, at which point the robot defines a final objective and adjusts its path to complete the task.
+2.**Navigation:** begins as soon as the person is found, at which point the robot defines a final objective and adjusts its path to complete the task.
 
 ### Exploration strategy:
 
@@ -44,7 +44,6 @@ The code uses **OpenCV** and **MediaPipe** to analyze the image and determine th
 The robot's **orientation** is adjusted based on the positions of the person's shoulders and hips, allowing the ideal angle for positioning to be calculated.
 
 1. If the person is facing the front or back, the robot positions itself sideways to them.
-
 2. If the person is facing the side, the robot slightly adjusts its trajectory to ensure proper alignment.
 
 Navigation to the final position is performed with **Nav2**, taking into account the orientation and displacement calculations within the detection node.
@@ -122,13 +121,9 @@ The person's position is published in the **person_locate** topic, in addition t
 
 The **final adjustment** to the robot's positioning is made using MediaPipe to track the person's body pose in the image. To do this, the distances between the person's shoulders and hips are analyzed. The larg_omb variable calculates the width between the shoulders, which is the difference between the X coordinates of the left and right shoulders, while larg_quad calculates the width between the hips, which is the difference between the X coordinates of the left and right hips.
 
-$$
 **If larg_omb > larg_quad * 1.2** - this indicates that the person is in a more forward or back position, as the width of the shoulders is significantly greater than that of the hips.
-$$
 
-$$
 **If shoulder_width < hip_width * 0.8** - this suggests that the person is lying sideways, as the width of the shoulders is much smaller than the width of the hips.
-$$
 
 These calculations help determine the person's orientation, precisely adjusting the robot's behavior relative to its position in the environment.
 
