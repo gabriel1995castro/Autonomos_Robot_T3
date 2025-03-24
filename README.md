@@ -90,20 +90,20 @@ $Z_{camera}$= d
 The transformation of the camera coordinates to the robot coordinate system is done using the robot pose, which includes its position (x,y,z) and its orientation (quaternion). The calculation for the coordinates in the robot system is given by:
 
 $$
-x_{robot} = x_{robot\_position} + x_{camera} \cdot \cos(yaw) - y_{camera} \cdot \sin(yaw)
+x_{robot} = x_{robot position} + x_{camera} \cdot \cos(yaw) - y_{camera} \cdot \sin(yaw)
 $$
 
 $$
-y_{robot} = y_{robot\_position} + x_{camera} \cdot \sin(yaw) + y_{camera} \cdot \cos(yaw)
+y_{robot} = y_{robot position} + x_{camera} \cdot \sin(yaw) + y_{camera} \cdot \cos(yaw)
 $$
 
 $$
-z_{robot} = z_{robot\_position} + z_{camera}
+z_{robot} = z_{robot position} + z_{camera}
 $$
 
 Where:
 
-- $x_{robot\_position},y_{robot\_position},z_{robot\_position}$: are the coordinates of the robot in global space (obtained from the robot's location).
+- $x_{robot position},y_{robot position},z_{robot position}$: are the coordinates of the robot in global space (obtained from the robot's location).
 - $x_{camera},y_{camera},z_{camera​}$: are the calculated coordinates for the object in the camera coordinate system.
 - $yaw$: is the rotation of the robot around the vertical axis, obtained from the orientation quaternion.
 
@@ -112,8 +112,8 @@ Where:
 The direction from the robot to the object is defined by the difference between the x and y coordinates of the robot and the object. 
 The calculation is given by:
 $$
-dx=x_{person} − x_{robot\_position}​
-dy=y_{person} − y_{robot\_position}
+dx=x_{person} − x_{robot position}​
+dy=y_{person} − y_{robot position}
 yaw=atan2(dy,dx)
 $$
 
@@ -124,7 +124,9 @@ The **final adjustment** to the robot's positioning is made using MediaPipe to t
 
 $$
 **If larg_omb > larg_quad * 1.2** - this indicates that the person is in a more forward or back position, as the width of the shoulders is significantly greater than that of the hips.
+$$
 
+$$
 **If shoulder_width < hip_width * 0.8** - this suggests that the person is lying sideways, as the width of the shoulders is much smaller than the width of the hips.
 $$
 
