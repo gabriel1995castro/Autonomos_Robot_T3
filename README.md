@@ -67,40 +67,44 @@ The 3D position of the person in the environment is calculated in the camera coo
 The first conversion process involves using the depth image and the pixel coordinates of the detected object to calculate the object coordinates. The formulas for the **X_camera​** and **Y_camera**​ coordinates are as follows:
 
 $$
-X_camera = ((x_obj_ - c_x) * d) / f_x
+X_{camera} = \frac{(x_{obj} - c_x) \cdot d}{f_x}
 $$
 
 $$
-Y_camera = ((y_obj_ - c_y) * d) / f_y
+Y_{camera} = \frac{(y_{obj} - c_y) \cdot d}{f_y}
 $$
 
 where:
 
-- $x_obj​/y_obj$ are the X and Y coordinates of the pixel where the object was detected.
+- $x_{obj​}/y_{obj}$ are the X and Y coordinates of the pixel where the object was detected.
 - $c_x/c_y$ are the central points of the image in relation to the X (horizontal focal point) and Y (vertical focal point) axes.
 - $d$ is the depth of the object (obtained from the depth image, in meters).
 - $f_x/f_y$ are the focal distances of the camera (horizontal focal point and vertical focal point).
 
 The Z coordinate is simply the depth:
 
-$Z_camera$= d
+$Z_{camera}$= d
 
 # Transformation to the robot coordinate system:
 
 The transformation of the camera coordinates to the robot coordinate system is done using the robot pose, which includes its position (x,y,z) and its orientation (quaternion). The calculation for the coordinates in the robot system is given by:
 
 $$
-x_robot​= x_robot position​ + x_camera​⋅cos(yaw) − y_camera​⋅sin(yaw)
-y_robot= y_robot position + x_camera⋅sin⁡(yaw) + y_camera⋅cos⁡(yaw)
-y_robot​= y_robot position​ + x_camera​⋅sin(yaw) + y_camera​⋅cos(yaw)
-z_robot= z_robot position + z_camera
-z_robot​= z_robot position​ + z_camera​
+x_{robot} = x_{robot\_position} + x_{camera} \cdot \cos(yaw) - y_{camera} \cdot \sin(yaw)
+$$
+
+$$
+y_{robot} = y_{robot\_position} + x_{camera} \cdot \sin(yaw) + y_{camera} \cdot \cos(yaw)
+$$
+
+$$
+z_{robot} = z_{robot\_position} + z_{camera}
 $$
 
 Where:
 
-- $x_robot position,y_robot position,z_robot position​$: are the coordinates of the robot in global space (obtained from the robot's location).
-- $x_camera,y_camera,z_camera​$: are the calculated coordinates for the object in the camera coordinate system.
+- $x_{robot\_position},y_{robot\_position},z_{robot\_position}$: are the coordinates of the robot in global space (obtained from the robot's location).
+- $x_{camera},y_{camera},z_{camera​}$: are the calculated coordinates for the object in the camera coordinate system.
 - $yaw$: is the rotation of the robot around the vertical axis, obtained from the orientation quaternion.
 
 # Calculating the direction of the robot to the object:
@@ -108,8 +112,8 @@ Where:
 The direction from the robot to the object is defined by the difference between the x and y coordinates of the robot and the object. 
 The calculation is given by:
 $$
-dx=x_person − x_robot position​
-dy=y_person − y_robot position
+dx=x_{person} − x_{robot\_position}​
+dy=y_{person} − y_{robot\_position}
 yaw=atan2(dy,dx)
 $$
 
