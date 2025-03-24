@@ -52,6 +52,11 @@ Navigation to the final position is performed with **Nav2**, taking into account
 
 For the people detection process, YOLOv8n was used, a model developed by Ultralytics, optimized to offer high speed and low computational demand. It is widely used in mobile devices and systems with limited resources, ensuring good accuracy and efficiency in real-time object detection.
 
+| YOLOv8n detection|
+|--------------------------|
+| ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/20c0f8ac9953baed6b4bc8d3df3cc8ee7e30bad2/Images/output_image2.jpg) |
+| ![]([https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/20c0f8ac9953baed6b4bc8d3df3cc8ee7e30bad2/Images/output_image2.jpg](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/20c0f8ac9953baed6b4bc8d3df3cc8ee7e30bad2/Images/output_image3.jpg)) |
+
 
 The node responsible for person detection receives data from the robot's RGB camera and depth camera. To avoid false positive detections, the code uses a **confidence threshold** (confidence_threshold), which eliminates all detections with less than 60% certainty.
 
@@ -82,7 +87,9 @@ where:
 
 The Z coordinate is simply the depth:
 
-$Z_{camera}$= d
+$$
+Z_{camera} = d
+$$
 
 # Transformation to the robot coordinate system:
 
