@@ -157,6 +157,11 @@ The person's position is published in the **person_locate** topic, in addition t
 
 The **final adjustment** to the robot's positioning is made using MediaPipe to track the person's body pose in the image. To do this, the distances between the person's shoulders and hips are analyzed. The larg_omb variable calculates the width between the shoulders, which is the difference between the X coordinates of the left and right shoulders, while larg_quad calculates the width between the hips, which is the difference between the X coordinates of the left and right hips.
 
+| Person pose estimation using MediaPipe.|
+|--------------------------|
+| ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/ac7243f505398ff5935a933391e9f63407c3716f/Images/imagem_com_pose.jpg)|
+
+
 **If larg_omb > larg_quad * 1.2** - this indicates that the person is in a more forward or back position, as the width of the shoulders is significantly greater than that of the hips.
 
 **If shoulder_width < hip_width * 0.8** - this suggests that the person is lying sideways, as the width of the shoulders is much smaller than the width of the hips.
