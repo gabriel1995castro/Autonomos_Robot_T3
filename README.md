@@ -73,7 +73,7 @@ For the people detection process, YOLOv8n was used, a model developed by Ultraly
 
 | Yolov8n image test 1 | Yolov8n image test 2|
 |--------------------|--------------------------------|
-| ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/441654e2a2e7af0622b6991d619cc46ba892d300/Images/output_image2.jpg) | ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/441654e2a2e7af0622b6991d619cc46ba892d300/Images/output_image3.jpg)|
+| ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/441654e2a2e7af0622b6991d619cc46ba892d300/Images/output_image2.jpg) | ![](https://github.com/gabriel1995castro/Autonomos_Robot_T3/blob/91a828dee3f655615f1e71e98ca7f5be80c2f922/Images/output_image.jpg)|
 
 The node responsible for person detection receives data from the robot's RGB camera and depth camera. To avoid false positive detections, the code uses a **confidence threshold** (confidence_threshold), which eliminates all detections with less than 60% certainty.
 
@@ -199,13 +199,13 @@ ros2 launch clearpath_gz simulation.launch.py x:=1.5 y:=2.7 yaw:=1.5707
 Launch nav2 demos to run the navigation process:
 
  ```bash
-ros2 launch clearpath_gz simulation.launch.py x:=1.5 y:=2.7 yaw:=1.5707
+ros2 launch clearpath_viz view_navigation.launch.py namespace:=a200_0000
 ```
 
 Initialize the exploration node:
 
  ```bash
-ros2 run robot_navigation_yolo fontrier_based_exploratin
+ros2 launch clearpath_nav2_demos nav2.launch.py setup_path:=$HOME/clearpath/ use_sim_time:=true
 ```
 Initialize the navigation node:
 
