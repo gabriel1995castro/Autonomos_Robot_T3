@@ -111,8 +111,12 @@ Where:
 The direction from the robot to the object is defined by the difference between the x and y coordinates of the robot and the object. 
 The calculation is given by:
 $$
-dx=x_{person} − x_{robot position}​
+dx=x_{person} − x_{robot position}
+​$$
+$$
 dy=y_{person} − y_{robot position}
+$$
+$$
 yaw=atan2(dy,dx)
 $$
 
