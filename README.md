@@ -90,11 +90,11 @@ $Zcamera$= d
 The transformation of the camera coordinates to the robot coordinate system is done using the robot pose, which includes its position (x,y,z) and its orientation (quaternion). The calculation for the coordinates in the robot system is given by:
 
 $$
-xrobot​=xrobot position​+xcamera​⋅cos(yaw)−ycamera​⋅sin(yaw)
-yrobot=yrobot position+xcamera⋅sin⁡(yaw)+ycamera⋅cos⁡(yaw)
-yrobot​=yrobot position​+xcamera​⋅sin(yaw)+ycamera​⋅cos(yaw)
-zrobot=zrobot position+zcamera
-zrobot​=zrobot position​+zcamera​
+xrobot​= xrobot_position​ + xcamera​⋅cos(yaw) − ycamera​⋅sin(yaw)
+yrobot= yrobot_position + xcamera⋅sin⁡(yaw) + ycamera⋅cos⁡(yaw)
+yrobot​= yrobot_position​ + xcamera​⋅sin(yaw) + ycamera​⋅cos(yaw)
+zrobot= zrobot_position + zcamera
+zrobot​= zrobot_position​ + zcamera​
 $$
 
 Where:
