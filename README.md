@@ -1,4 +1,4 @@
-# T3: Implementation of a Mobile Robot for Human Search.
+# Implementation of a Mobile Robot for Human Search.
 
 The objective of this project is to develop a navigation system for an autonomous robot capable of performing the following tasks:
 
